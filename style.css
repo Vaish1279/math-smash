@@ -9,3 +9,87 @@ body[data-op="+"]{--op-color:#a7f3d0;--op-bg:rgba(167,243,208,.13)}body[data-op=
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 /* Installed PWA behaves like an app: keep the legal website footer in browser mode only. */
 @media (display-mode: standalone), (display-mode: fullscreen) { .footer { display: none; } }
+
+
+/* =========================================================
+   RESPONSIVE LAYOUT FIX — Math Smash
+   Keeps the layout inside the screen without disabling
+   browser zoom accessibility.
+========================================================= */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.app,
+.home,
+.game-shell,
+.game-overlay {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.app {
+  width: 100%;
+}
+
+img,
+svg,
+canvas,
+video {
+  max-width: 100%;
+}
+
+button {
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media (max-width: 650px) {
+  .app {
+    padding-left: max(14px, env(safe-area-inset-left));
+    padding-right: max(14px, env(safe-area-inset-right));
+  }
+
+  .topbar {
+    gap: 8px;
+  }
+
+  .brand {
+    min-width: 0;
+    flex: 1 1 auto;
+  }
+
+  .brand-name {
+    white-space: nowrap;
+  }
+
+  .top-actions {
+    flex: 0 0 auto;
+    min-width: 0;
+  }
+
+  .hero {
+    min-width: 0;
+  }
+
+  .hero-copy {
+    min-width: 0;
+  }
+
+  .hero h1 {
+    overflow-wrap: anywhere;
+  }
+
+  .quick-row {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-stat {
+    min-width: 0;
+  }
+
+  .quick-stat b {
+    font-size: 11px;
+  }
