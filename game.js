@@ -21,7 +21,7 @@
         smashes: state.smashes, streak: state.streak, bestStreak: state.bestStreak,
         hints: state.hints, hintRefillAt: state.hintRefillAt, sound: state.sound, theme: state.theme
       }));
-    } catch (error) { console.warn("Math Smash could not save local progress:", error); }
+    } catch (error) { console.warn("HAMMATH could not save local progress:", error); }
   }
   function loadState() {
     try {
