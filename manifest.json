@@ -1,14 +1,22 @@
 {
   "id": "./",
-  "name": "Math Smash",
-  "short_name": "Math Smash",
-  "description": "Think, Aim and Smash your way through 10,000 maths levels.",
+  "name": "HAMMATH \u2014 Think. Aim. Smash.",
+  "short_name": "HAMMATH",
+  "description": "A colourful maths challenge with 10,000 levels for each operation.",
   "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "orientation": "portrait",
   "background_color": "#101b2d",
   "theme_color": "#14233b",
+  "categories": [
+    "education",
+    "games"
+  ],
   "prefer_related_applications": false,
   "icons": [
     {
