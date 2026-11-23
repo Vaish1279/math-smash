@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14233b">
+  <meta name="description" content="HAMMATH is a playful maths game with 10,000 levels for each operation. Think, aim and smash!">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>HAMMATH — Think. Aim. Smash.</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="icon" href="./icon-192.png" type="image/png">
+  <link rel="apple-touch-icon" href="./icon-192.png">
+  <link rel="stylesheet" href="./style.css">
+</head>
+<body data-theme="classic" data-op="+">
+  <div id="loader" class="loader" aria-label="Loading HAMMATH">
+    <div class="loader-mascot"><span>✦</span><b>M</b><i>+</i></div>
+    <div class="loader-title">HAMMATH</div>
+    <div class="loader-track"><i></i></div>
+    <p>GET YOUR BRAIN IN THE GAME</p>
+  </div>
+
+  <div id="app" class="app hidden">
+    <header class="topbar">
+      <a class="brand" href="#home" aria-label="HAMMATH home">
+        <span class="brand-mark"><img src="icon-192.png" alt="" /></span>
+        <span class="brand-name">HAMMATH<small>THINK · AIM · SMASH</small></span>
+      </a>
+      <div class="top-actions">
+        <button class="install-btn" id="installBtn" hidden>＋ INSTALL</button>
+        <button class="icon-btn" id="soundToggle" aria-label="Toggle sound" title="Sound">♫</button>
+        <button class="hint-pill" id="hintInfo" aria-label="Hint information"><span>✦</span><b id="hintCount">2</b><small>HINTS</small></button>
+        <button class="avatar-btn" id="helpBtn" aria-label="How to play">?</button>
+      </div>
+    </header>
+
+    <main class="home" id="home">
+      <section class="hero">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="pulse-dot"></span> YOUR DAILY BRAIN PLAYGROUND</div>
+          <h1>Make numbers<br><em>your playground.</em></h1>
+          <p>Build a sharper number sense, one satisfying smash at a time. Start simple. Go as far as you can.</p>
+          <div class="hero-actions">
+            <button class="primary-btn" id="continueBtn">CONTINUE PLAYING <span>↗</span></button>
+            <button class="text-btn" id="howBtn">How to play <span>→</span></button>
+          </div>
+        </div>
+        <div class="hero-art" aria-hidden="true">
+          <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
+          <div class="float-number n-one">7</div><div class="float-number n-two">+</div><div class="float-number n-three">2</div>
+          <div class="target-block"><span>2</span><i></i></div>
+          <div class="hammer-illustration"><span>🔨</span></div>
+          <div class="art-caption">A LITTLE PLAY.<br><b>A LOT OF PROGRESS.</b></div>
+        </div>
+      </section>
+
+      <section class="quick-row" aria-label="Your local progress">
+        <div class="quick-stat"><span class="quick-icon">◎</span><div><small>YOUR PROGRESS</small><b id="progressText">Level 1 of 10,000</b></div></div>
+        <div class="quick-stat"><span class="quick-icon">✦</span><div><small>BEST STREAK</small><b id="streakText">0 correct</b></div></div>
+        <div class="quick-stat"><span class="quick-icon">▣</span><div><small>SMASHED</small><b id="smashText">0 answers</b></div></div>
+      </section>
+
+      <section class="theme-section">
+        <div class="section-head"><div><div class="eyebrow">MAKE IT YOURS</div><h2>Choose your theme</h2></div><span class="section-note">Switch anytime</span></div>
+        <div class="theme-list" id="themeList" role="group" aria-label="Choose a colour theme">
+          <button class="theme-choice active" data-theme-choice="classic" aria-pressed="true"><span class="theme-swatch classic-swatch"><i></i><i></i><i></i></span><span><b>Classic</b><small>Fresh & balanced</small></span><span class="theme-check">✓</span></button>
+          <button class="theme-choice" data-theme-choice="bloom" aria-pressed="false"><span class="theme-swatch bloom-swatch"><i></i><i></i><i></i></span><span><b>Bloom · Girls theme</b><small>Pink & lavender</small></span><span class="theme-check">✓</span></button>
+          <button class="theme-choice" data-theme-choice="bolt" aria-pressed="false"><span class="theme-swatch bolt-swatch"><i></i><i></i><i></i></span><span><b>Bolt · Boys theme</b><small>Blue & lime</small></span><span class="theme-check">✓</span></button>
+        </div>
+      </section>
+
+      <section class="choose-section">
+        <div class="section-head"><div><div class="eyebrow">PICK YOUR PRACTICE</div><h2>Choose an operation</h2></div><span class="section-note">Pick one · switch anytime</span></div>
+        <div class="operation-list" id="operationList">
+          <button class="operation active" data-op="+" aria-pressed="true"><b>＋</b><span>ADD</span></button>
+          <button class="operation" data-op="-" aria-pressed="false"><b>−</b><span>SUBTRACT</span></button>
+          <button class="operation" data-op="*" aria-pressed="false"><b>×</b><span>MULTIPLY</span></button>
+          <button class="operation" data-op="/" aria-pressed="false"><b>÷</b><span>DIVIDE</span></button>
+        </div>
+      </section>
+
+      <section class="levels-section">
+        <div class="section-head"><div><div class="eyebrow">YOUR 10,000-STEP MATH QUEST</div><h2>Your next level</h2></div><span class="level-count" id="levelCount">LEVEL 1 / 10,000</span></div>
+        <div class="level-spotlight"><div><b id="currentLevelText">Level 1 is ready</b><small id="nextLevelText">Next up: Level 2</small></div><strong id="levelRangeText">0 CLEARED</strong></div>
+        <div class="level-journey"><button class="level-nav" id="levelPrev" aria-label="Previous level">‹</button><div class="level-track" id="levelTrack" aria-label="Current and next levels"></div><button class="level-nav" id="levelNext" aria-label="Next level">›</button></div>
+        <div class="level-foot"><span class="legend-dot unlocked"></span> Ready <span class="legend-dot locked"></span> Locked <span class="legend-dot done"></span> Cleared <span class="level-foot-note">Only your nearby levels are shown</span></div>
+      </section>
+
+      <footer class="footer">
+        <div><div class="footer-brand">HAMMATH</div><p>Small calculations. Stronger thinking.</p></div>
+        <div><b>PLAY FAIR</b><p>Learn at your own pace. Take breaks. Have fun.</p></div>
+        <button id="resetBtn" class="quiet-link">Reset progress</button>
+        <div class="footer-legal"><b>Terms &amp; Play Guidelines:</b> HAMMATH is an educational game for practice and entertainment. Questions are generated by the game and should be treated as practice, not formal assessment. Timers are part of the challenge, not a measure of ability. Progress and hint availability are stored locally on this device. Clearing browser or app data may erase progress. Younger players should use the game with appropriate adult guidance. The game is provided as-is and may be updated or expanded. By playing, you agree to use it responsibly.<br><b>Privacy:</b> This version does not require an account and does not intentionally collect personal information. Game progress is stored locally on this device. No cloud synchronisation is included in this build.<br><b>Copyright © 2026 HAMMATH.</b> All rights reserved. Do not copy, redistribute or commercially reuse the game, branding, artwork or code without permission.</div>
+      </footer>
+    </main>
+  </div>
+
+  <div class="modal-backdrop" id="modalBackdrop">
+    <section class="modal" id="infoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+      <div class="modal-kicker" id="modalKicker">READY?</div><h2 id="modalTitle">Let's play.</h2>
+      <div id="modalBody" class="modal-body"></div><div id="modalActions" class="modal-actions"></div>
+    </section>
+  </div>
+
+  <div class="game-overlay hidden" id="gameOverlay">
+    <div class="game-shell">
+      <div class="game-top">
+        <button class="back-link" id="gameBack">← HOME</button>
+        <div class="game-level-label"><small id="gameOperationLabel">ADDITION</small><b id="gameLevelLabel">LEVEL 01</b></div>
+        <div class="game-top-right"><span class="game-hints">✦ <b id="gameHintCount">2</b></span><button class="pause-btn" id="pauseBtn" aria-label="Pause game">Ⅱ</button></div>
+      </div>
+      <div class="game-progress"><i id="questionProgress"></i></div>
+      <div class="game-timer" id="gameTimer" aria-live="polite">◷ <span id="timerText">01:00</span></div>
+      <div class="game-intro"><div class="challenge-tag" id="challengeTag">QUICK THINKER</div><span class="eyebrow">AIM FOR THE RIGHT ANSWER</span><h2 id="questionText">1 + 1 <em>= ?</em></h2><p id="questionSub">Find the correct number and smash it.</p></div>
+      <div class="game-arena"><div class="arena-glow"></div><div class="hammer-cursor" id="hammerCursor">🔨</div><div class="answer-grid" id="answerGrid"></div><div class="smash-message" id="smashMessage"></div></div>
+      <div class="game-bottom"><div class="lives" id="lives">♥ ♥ ♥</div><div class="game-bottom-note">BEAT THE CLOCK · 5 QUESTIONS</div><button class="hint-use" id="useHint">✦ USE HINT <b id="hintUseCount">2</b></button></div>
+    </div>
+  </div>
+  <script src="./game.js" defer></script>
+</body>
+</html>
